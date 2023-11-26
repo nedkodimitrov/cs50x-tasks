@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ task.title }}
+{% endblock %}
+
+{% set task, assignee, assigner, priority, status = task_join_lookup %}
+
+{% block main %}
+
+    {# show full task info #}
+    <div class="my-container">
+        <div class="my-header">
+            <h1 class="task-title">{{ task.title }}</h1>
+            <p class="task-due-date">Due date: {{ task.due_date }}</p>
+            <p class="my-timestamp">{{ task.timestamp }}</p>
+        </div>
+
+
+        <hr class="divider">
+
+        <div class="task-description">
+            <p>{{ task.description }}</p>
+        </div>
+
+        <hr class="divider">
+
+        <div class="task-info">
+            <div class="info-item">
+                <p class="info-label">Priority:</p>
+                <p class="info-value">{{ priority }}</p>
+            </div>
+            <div class="info-item">
+                <p class="info-label">Status:</p>
+                <p class="info-value">{{ status }}</p>
+            </div>
+            <div class="info-item">
+                <p class="info-label">Assigner:</p>
+                <p class="info-value">{{ assigner }}</p>
+            </div>
+            <div class="info-item">
+                <p class="info-label">Assignee:</p>
+                <p class="info-value">{{ assignee }}</p>
+            </div>
+            {% if task.assignee_id == session["user_id"] or task.assigner_id == session["user_id"]%}
+                <a href="/edit_task?id={{ task.id }}">
+                    <button class="btn btn-primary">Edit Task</button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="my-container">
+        <h5>Comments</h5>
+        
+        {# show task comments #}
+        <div id="comments-container">
+            {% for comment, username in comments %}
+                <div class="comment">
+                    <div class="my-header">
+                        <p class="comment-user">{{ username }}</p>
+                        <p class="my-timestamp">{{ comment.timestamp }}</p>
+                    </div>
+                    <p class="comment-text">{{ comment.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        
+        {# form for adding a new comment #}
+        <div class="new-comment-form">
+            <h5>Add a Comment</h5>
+            <form action="/add_comment" method="post">
+                {% for field in comment_form %}
+                    <div class="mb-3">
+                        {{ field(placeholder=field.label.text) }}
+                    </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Comment</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

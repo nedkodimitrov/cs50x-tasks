@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% from "macro_render_task_form.html" import macro_render_task_form %}
+
+{% block title %}
+    Create Task
+{% endblock %}
+
+{% block script %}
+    <script src="static/js/get_curr_date.js"></script>
+    <script src="static/js/autocomplete_assignee.js"></script>
+{% endblock %}
+
+{% block main %}
+    {{ macro_render_task_form(form, title="Create task", action="/new_task") }}
+    <a href="/" class="btn btn-secondary">Cancel</a>
+{% endblock %}

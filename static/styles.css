@@ -1,0 +1,152 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: x-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+.my-container {
+    padding: 20px;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin: 20px;
+}
+
+.my-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.task-title {
+    font-size: 24px;
+    margin: 0;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.my-timestamp {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+.divider {
+    border-top: 1px solid #bbbbbb;
+    margin: 20px 0;
+}
+
+.task-description {
+    margin: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.task-due-date {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.task-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+}
+
+.info-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.task-info a {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.comment {
+    border: 1px solid #bbbbbb;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #e0e4e9;
+}
+
+.comment-user {
+    font-weight: bold;
+    margin: 0;
+}
+
+.comment-text {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.new-comment-form {
+    margin-top: 40px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.task-form {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+#notification-container, .card-body, #comments-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notification {
+    border: 1px solid #bbbbbb;
+    padding: 5px;
+    background-color: #e0e4e9;
+}
+
+ {
+    max-height: 400px;
+    overflow-y: auto;
+}

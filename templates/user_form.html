@@ -1,0 +1,18 @@
+{# template for user log in, register and change password forms #}
+
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block main %}
+    <form action="{{ action }}" method="post">
+        {% for field in user_form %}
+        <div class="mb-3">
+            {{ field(class="form-control mx-auto w-auto", placeholder=field.label.text) }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">{{ title }}</button>
+    </form>
+{% endblock %}

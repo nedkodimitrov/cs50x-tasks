@@ -1,0 +1,49 @@
+{# macro form for creating, editing and searching a task #}
+{# this file is quite messy but it is what it is #}
+
+{% macro macro_render_task_form(form, title, action, status_only=False) %}
+    <form id="task_form" action="{{ action }}" method="post" class="task-form">
+        {{form.hidden_tag()}}
+        {% if not status_only %} {# status_only is set True in edit_task.html if the user is not the assigner #}
+            {% if form.text %} {# in search_task.html #}
+                <div class="form-group">
+                    {{ form.text(class="form-control", rows=4, placeholder="Contains text") }}
+                </div>
+            {% else %}
+                <div class="form-group">
+                    <label for="{{ form.title.id }}">Title:</label>
+                    {{ form.title(class="form-control", placeholder="Enter task title") }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.description.id }}">Description:</label>
+                    {{ form.description(class="form-control", rows=4, placeholder="Enter task description") }}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="{{ form.assignee.id }}">Assignee:</label>
+                {{ form.assignee(class="form-control mx-auto w-auto", placeholder="Assignee") }}
+            </div>
+            {% if form.assigner %} {# in search_task.html #}
+                <div class="form-group">
+                    <label for="{{ form.assigner.id }}">Assigner:</label>
+                    {{ form.assigner(class="form-control mx-auto w-auto", placeholder="Assigner") }}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="{{ form.due_date.id }}">Due Date:</label>
+                {{ form.due_date(class="form-control mx-auto w-auto", placeholder="Select due date") }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.priority_id.id }}">Priority:</label>
+                {{ form.priority_id(class="form-control mx-auto w-auto") }}
+            </div>
+        {% endif %}
+        {% if form.status_id %} {# in edit.html and search_task.html #}
+            <div class="form-group">
+                <label for="{{ form.status_id.id }}">Status:</label>
+                {{ form.status_id(class="form-control mx-auto w-auto") }}
+            </div>
+        {% endif %}
+        <button id="btn_submit" type="submit" class="btn btn-primary">{{ title }}</button>
+    </form>
+{% endmacro %}

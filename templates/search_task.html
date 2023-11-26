@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% from "macro_render_tasks_table.html" import macro_render_tasks_table %}
+{% from "macro_render_task_form.html" import macro_render_task_form %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block script %}
+    <script src="static/js/autocomplete_assignee.js"></script>
+    <script src="static/js/autocomplete_assigner.js"></script>
+{% endblock %}
+
+{% block main %}
+    {{ macro_render_task_form(form, title="Search", action="/search_task") }}
+
+    {% if tasks_join_lookup %}
+    {# search results #}
+        <div class="my-container">
+            {{ macro_render_tasks_table("Results", tasks_join_lookup) }}
+        </div>
+    {% endif %}
+{% endblock %}

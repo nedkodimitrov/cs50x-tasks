@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% from "macro_render_task_form.html" import macro_render_task_form %}
+
+{% block title %}
+    Edit Task
+{% endblock %}
+
+{% block script %}
+    <script src="static/js/autocomplete_assignee.js"></script>
+{% endblock %}
+
+{% block main %}
+    {# if the user is not the assigner show only status field #}
+    {{ macro_render_task_form(form, title="Edit task", action="/edit_task", status_only = not is_assigner) }}
+    <a href="/show_task?id={{ form.id.data }}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

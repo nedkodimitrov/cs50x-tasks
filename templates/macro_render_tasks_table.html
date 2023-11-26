@@ -1,0 +1,43 @@
+{# Macro for rendering a table with tasks #}
+
+{% macro macro_render_tasks_table(label, tasks_join_lookup, show_assignee=True, show_assigner=True) %}
+    <div class="card">
+        <div class="card-header bg-secondary text-white">
+            {{ label }}
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        {% if show_assignee %}
+                            <th>Assignee</th>
+                        {% endif %}
+                        {% if show_assigner %}
+                            <th>Assigner</th>
+                        {% endif %}
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th class="text-end">Due Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task, assignee, assigner, priority, status in tasks_join_lookup %}
+                        <tr>
+                            <td><a href="/show_task?id={{ task.id }}">{{ task.title }}</a></td>
+                            {% if show_assignee %}
+                                <td>{{ assignee }}</td>
+                            {% endif %}
+                            {% if show_assigner %}
+                                <td>{{ assigner }}</td>
+                            {% endif %}
+                            <td>{{ priority }}</td>
+                            <td>{{ status }}</td>
+                            <td class="text-end">{{ task.due_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endmacro %}

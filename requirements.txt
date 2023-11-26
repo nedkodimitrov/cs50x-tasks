@@ -1,0 +1,7 @@
+Flask
+Flask-Session
+SQLAlchemy
+Werkzeug
+Flask-WTF
+WTForms
+wtforms-alchemy
